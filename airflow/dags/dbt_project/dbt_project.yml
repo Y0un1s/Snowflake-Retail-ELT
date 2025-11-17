@@ -1,0 +1,35 @@
+name: ecommerce_dbt
+version: '1.0'
+config-version: 2
+
+profile: ecommerce_snowflake
+
+model-paths: ["models"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+
+models:
+  ecommerce_dbt:
+
+    # -------------------------
+    # 1. STAGING MODELS (views)
+    # -------------------------
+    staging:
+      +schema: STG         # schema = STG
+      +materialized: view
+      +tags: ["staging"]
+
+    # -------------------------
+    # 2. MART MODELS (tables)
+    # -------------------------
+    marts:
+      +schema: MART        # schema = MART
+      +materialized: table
+      +tags: ["mart"]
+
+snapshots:
+  +schema: SNAPSHOTS
+  +target_path: "snapshots"

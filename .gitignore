@@ -1,0 +1,12 @@
+.env
+.user.yml
+logs/
+.idea/
+.idea
+
+# Python
+.venv/
+__pycache__/
+
+# Airflow
+airflow/logs/
